@@ -125,7 +125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "References",
     "title": "SimPW",
     "category": "section",
-    "text": "H. J. C. Berendsen. Simulating the Physical World, Cambridge University Press, 2007. ISBN-13: 978-0521835275"
+    "text": "H. J. C. Berendsen. Simulating the Physical World, Cambridge University Press, 2007. ISBN: 978-0521835275"
 },
 
 {
