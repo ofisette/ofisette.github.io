@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "License",
     "category": "section",
-    "text": "You can use Dorothy under the terms of the MIT “Expat” License; see LICENSE.md in the project files, or Software license in the online documentation."
+    "text": "You can use Dorothy under the terms of the MIT License; see LICENSE.md in the project files, or Software license in the online documentation."
 },
 
 {
@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Citing",
     "category": "section",
-    "text": "If you use Dorothy in your research, please cite the software in your publications. There is currently no published paper describing Dorothy, but it can still be cited as follows:Olivier Fisette. Dorothy: Julia package for molecular structure manipulation and analysis, version 0.1, 2019. https://github.com/ofisette/Dorothy.jl"
+    "text": "If you use Dorothy in your research, please cite the software in your publications. There is currently no published work describing Dorothy, but it can still be cited as follows:Olivier Fisette. Dorothy: Julia package for molecular structure manipulation and analysis, version 0.1, 2019. https://github.com/ofisette/Dorothy.jl"
 },
 
 {
@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "Community",
     "category": "section",
-    "text": "Dorothy is developed by Olivier Fisette in the Center for Theoretical Chemistry at Ruhr-University Bochum, Germany.Contributions, bug reports and feature suggestions are welcome. Development is tracked in the project’s repository."
+    "text": "Dorothy is developed by Olivier Fisette in the Molecular Simulation Group of Lars V. Schäfer at the Center for Theoretical Chemistry of Ruhr-University Bochum, Germany.Contributions, bug reports and feature suggestions are welcome. Development is tracked in the project’s repository."
 },
 
 {
@@ -141,7 +141,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Software license",
     "title": "Software license",
     "category": "section",
-    "text": "The Dorothy.jl package can be used under the terms of the MIT “Expat” License:Copyright (c) 2019: Olivier Fisette.Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    "text": "You can use the Dorothy.jl package under the terms of the MIT License:Copyright (c) 2019: Olivier Fisette.Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
 },
 
 ]}
