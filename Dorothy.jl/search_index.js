@@ -21,7 +21,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Home",
     "title": "License",
     "category": "section",
-    "text": "You can use Dorothy under the terms of the MIT License; see LICENSE.md in the project files, or Software license in the online documentation."
+    "text": "You can use Dorothy under the terms of the MIT License; see LICENSE.md in the project files, or Software license in the documentation."
 },
 
 {
@@ -77,28 +77,76 @@ var documenterSearchIndex = {"docs": [
     "page": "Introduction",
     "title": "Introduction",
     "category": "section",
-    "text": ""
+    "text": "Dorothy provides data structures and algorithms for the scripted or interactive manipulation and analysis of molecular systems, with a particular emphasis on biological macromolecules. You can use Dorothy to build or modify systems for starting molecular dynamics simulations, to analyse trajectories output by such simulations, or to examine structures from the Protein Data Bank."
 },
 
 {
-    "location": "refs/#",
-    "page": "References",
-    "title": "References",
+    "location": "intro/#Main-package-features-1",
+    "page": "Introduction",
+    "title": "Main package features",
+    "category": "section",
+    "text": "Array-like data structures representing particle collections\nAccess particle properties as arrays\nCreate views over particle subsets\nSplice particles to add/remove them from a model\nRead and write molecular structures in common file formats\nProtein Data Bank (.pdb)\nGromos87 (.gro)\nRead and write molecular trajectories in common file formats\nGromacs uncompressed trajectories (.trr)\nGromacs compressed trajectories (.xtc, read-only)\nAutomatic format detection with support for compressed files\nHierarchical iterators over models\nModel/chain/residue/particle\nModel/fragment/particle\nParticle selection\nProperty-based selectors (name, id, mass, secondary structure, etc.)\nHierarchy-based selectors (complete or partial chain, residue, etc.)\nDistance-based selectors\nLogical selectors\nPredefined convenience selectors (protein, N/C-termini, solvent, etc.)\nGeometry\nDistances, angles, dihedrals, centroids\nTransformations: translation, rotation, scaling\nRMSD and superposition\nLine and plane fitting\nTriclinic periodic boundary conditions\nMinimum particle-particle distance across periodic images\nWrap and unwrap particles into/from the unit cell\nEfficient distance calculations using neighbor lists and cell grids\nAutomated topology assignment\nAutomated secondary structure assignment (using STRIDE)"
+},
+
+{
+    "location": "intro/#Using-this-documentation-1",
+    "page": "Introduction",
+    "title": "Using this documentation",
+    "category": "section",
+    "text": "The documentation for Dorothy is split in three main parts. The first part, Manual, describes all the important features of the package, by topic and in a logical order. These pages form the core of the documentation and are especially recommended for new users. Before diving into the manual, however, it is suggested to go through the short Tutorial that follows this introduction.The second part, Development, discusses the general philosophy behind Dorothy and how to extend the package by implementing new features and writing generic, reusable code. Most users can ignore this.The third part, Reference, covers the public interface of Dorothy and its submodules. The same documentation is available from the REPL using Julia’s help mechanism; ?Dorothy can be used as a starting point to navigate through the submodules and their public variables."
+},
+
+{
+    "location": "tutorial/#",
+    "page": "Tutorial",
+    "title": "Tutorial",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "refs/#References-1",
-    "page": "References",
-    "title": "References",
+    "location": "tutorial/#Tutorial-1",
+    "page": "Tutorial",
+    "title": "Tutorial",
+    "category": "section",
+    "text": "This page will give you a quick overview of the basic usage of Dorothy before you read through the Manual or selected pages thereof. You will learn to read molecular models from files, query and modify particle properties, select subsets of the model, write a subset to a new file, and compute simple geometrical properties from particle positions.We assume Dorothy was already added to your Julia environment (see Installation). We load the necessary modules, then read a molecular model, an MHC-I protein in solvent, from a PBD file distributed with the package.julia> using Dorothy, Formats\n\njulia> model = readf(\"$(Dorothy.datapath)/MHC.pdb\")\n68336-particle 9-key MolecularModel:\n bfactors\n chainids\n elements\n ids\n names\n occupancies\n R\n resids\n resnames"
+},
+
+{
+    "location": "models/#",
+    "page": "Molecular models",
+    "title": "Molecular models",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "models/#Molecular-models-1",
+    "page": "Molecular models",
+    "title": "Molecular models",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "refs/#",
+    "page": "Bibliography",
+    "title": "Bibliography",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "refs/#Bibliography-1",
+    "page": "Bibliography",
+    "title": "Bibliography",
     "category": "section",
     "text": ""
 },
 
 {
     "location": "refs/#AAFreq-1",
-    "page": "References",
+    "page": "Bibliography",
     "title": "AAFreq",
     "category": "section",
     "text": "J. L. King, T. H. Jukes. Non-Darwinian Evolution. Science, 164(3881):788-98, 1969. doi:10.1126/science.164.3881.788"
@@ -106,7 +154,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "refs/#ArStd-1",
-    "page": "References",
+    "page": "Bibliography",
     "title": "ArStd",
     "category": "section",
     "text": "J. Meija, T. B. Coplen, M. Berglund et al. Atomic weights of the elements 2013 (IUPAC Technical Report). Pure and Applied Chemistry, 88(3):265-91, 2016. doi:10.1515/pac-2015-0305"
@@ -114,7 +162,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "refs/#RCov-1",
-    "page": "References",
+    "page": "Bibliography",
     "title": "RCov",
     "category": "section",
     "text": "B. Cordero, V. Gómez, A. E. Platero-Prats et al. Covalent radii revisited. Dalton Transactions, (21):2832-8, 2008. doi:10.1039/b801115j"
@@ -122,7 +170,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "refs/#SimPW-1",
-    "page": "References",
+    "page": "Bibliography",
     "title": "SimPW",
     "category": "section",
     "text": "H. J. C. Berendsen. Simulating the Physical World, Cambridge University Press, 2007. ISBN: 978-0521835275"
