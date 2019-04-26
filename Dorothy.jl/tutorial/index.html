@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Tutorial · Dorothy.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="Dorothy.jl logo"/></a><h1>Dorothy.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../">Home</a></li><li><a class="toctext" href="../intro/">Introduction</a></li><li class="current"><a class="toctext" href>Tutorial</a><ul class="internal"></ul></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../models/">Molecular models</a></li></ul></li><li><span class="toctext">Development</span></li><li><span class="toctext">Reference</span></li><li><span class="toctext">Appendices</span><ul><li><a class="toctext" href="../refs/">Bibliography</a></li><li><a class="toctext" href="../license/">Software license</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Tutorial</a></li></ul><a class="edit-page" href="https://github.com/ofisette/Dorothy.jl/blob/master/docs/src/tutorial.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Tutorial</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Tutorial-1" href="#Tutorial-1">Tutorial</a></h1><p>This page will give you a quick overview of the basic usage of Dorothy before you read through the <em>Manual</em> or selected pages thereof. You will learn to read molecular models from files, query and modify particle properties, select subsets of the model, write a subset to a new file, and compute simple geometrical properties from particle positions.</p><p>We assume Dorothy was already added to your Julia environment (see <a href="../#Installation-1">Installation</a>). We load the necessary modules, then read a molecular model, an MHC-I protein in solvent, from a PBD file distributed with the package.</p><pre><code class="language-julia-repl">julia&gt; using Dorothy, Formats
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Tutorial · Dorothy.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/><link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="Dorothy.jl logo"/></a><h1>Dorothy.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../">Home</a></li><li><a class="toctext" href="../intro/">Introduction</a></li><li class="current"><a class="toctext" href>Tutorial</a><ul class="internal"><li><a class="toctext" href="#Reading-molecular-models-1">Reading molecular models</a></li><li><a class="toctext" href="#Particle-properties-1">Particle properties</a></li><li><a class="toctext" href="#Model-headers-1">Model headers</a></li><li><a class="toctext" href="#Particle-selections-1">Particle selections</a></li><li><a class="toctext" href="#Writing-molecular-models-1">Writing molecular models</a></li><li><a class="toctext" href="#Geometry-calculations-1">Geometry calculations</a></li></ul></li><li><span class="toctext">Manual</span><ul><li><a class="toctext" href="../module/">Module organisation</a></li><li><a class="toctext" href="../models/">Molecular models</a></li></ul></li><li><span class="toctext">Development</span></li><li><span class="toctext">Reference</span></li><li><span class="toctext">Appendices</span><ul><li><a class="toctext" href="../refs/">Bibliography</a></li><li><a class="toctext" href="../license/">License</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Tutorial</a></li></ul><a class="edit-page" href="https://github.com/ofisette/Dorothy.jl/blob/master/docs/src/tutorial.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Tutorial</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Tutorial-1" href="#Tutorial-1">Tutorial</a></h1><p>This page will give you a quick overview of the basic usage of Dorothy before you read through the <em>Manual</em> or selected pages thereof. You will learn to read molecular models from files, query and modify particle properties, select subsets of the model, write a subset to a new file, and compute simple geometrical properties from particle positions.</p><h2><a class="nav-anchor" id="Reading-molecular-models-1" href="#Reading-molecular-models-1">Reading molecular models</a></h2><p>We assume Dorothy was already added to your Julia environment (see <a href="../#Installation-1">Installation</a>). We load the necessary modules, then read a molecular model, an MHC-I protein in solvent, from a PBD file distributed with the package.</p><pre><code class="language-julia-repl">julia&gt; using Dorothy, Formats
 
 julia&gt; model = readf(&quot;$(Dorothy.datapath)/MHC.pdb&quot;)
 68336-particle 9-key MolecularModel:
@@ -11,4 +11,171 @@ julia&gt; model = readf(&quot;$(Dorothy.datapath)/MHC.pdb&quot;)
  occupancies
  R
  resids
- resnames</code></pre><footer><hr/><a class="previous" href="../intro/"><span class="direction">Previous</span><span class="title">Introduction</span></a><a class="next" href="../models/"><span class="direction">Next</span><span class="title">Molecular models</span></a></footer></article></body></html>
+ resnames</code></pre><p>There is quite a bit going on in these few lines. The <code>Dorothy</code> top-level module provides basic data types, such as <code>MolecularModel</code>. The <code>Formats</code> module provides <code>readf</code>, a generic function to detect and read formatted data. Here, <code>readf</code> delegates reading <code>MHC.pdb</code> to the <code>Dorothy.PDB</code> submodule. The resulting <code>MolecularModel</code> contains 68336 particles (atoms) with 9 properties typical of PDB structures.</p><h2><a class="nav-anchor" id="Particle-properties-1" href="#Particle-properties-1">Particle properties</a></h2><p>Particle properties are arrays:</p><pre><code class="language-julia-repl">julia&gt; model.names
+68336-element Array{String,1}:
+ &quot;MN1&quot;
+ &quot;MN2&quot;
+ &quot;N&quot;  
+ &quot;H1&quot;
+ &quot;H2&quot;
+ &quot;H3&quot;
+ &quot;CA&quot;
+ &quot;HA1&quot;
+ &quot;HA2&quot;
+ &quot;C&quot;  
+ &quot;O&quot;  
+ ⋮    
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+ &quot;CL&quot;
+
+julia&gt; model.resnames[1]
+&quot;GLY&quot;
+
+julia&gt; model.elements[1:10]
+10-element Array{String,1}:
+ &quot;&quot;
+ &quot;&quot;
+ &quot;N&quot;
+ &quot;H&quot;
+ &quot;H&quot;
+ &quot;H&quot;
+ &quot;C&quot;
+ &quot;H&quot;
+ &quot;H&quot;
+ &quot;C&quot;</code></pre><p>Individual particles can also be queried by indexing the model. Properties become scalar quantities and use the singular form rather the plural.</p><pre><code class="language-julia-repl">julia&gt; p7 = model[7]
+9-key MolecularModel particle:
+ bfactor
+ chainid
+ element
+ id
+ name
+ occupancy
+ R
+ resid
+ resname
+
+julia&gt; p7.name
+&quot;CA&quot;</code></pre><p>Properties can be set on the model or individual particles.</p><pre><code class="language-julia-repl">julia&gt; p7.occupancy = 0.0
+0.0
+
+julia&gt; model.resids[1:11] .= 0
+11-element view(::Array{Int64,1}, 1:11) with eltype Int64:
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0
+ 0</code></pre><p>Particle positions are represented by <code>Vector3D</code> objects from the <code>Geometry</code> submodule. They are fixed-size, immutable, convertible to other <code>AbstractVector</code> types, and have <code>x</code>, <code>y</code> and <code>z</code> fields in addition to array-like indexing.</p><pre><code class="language-julia-repl">julia&gt; using
+julia&gt; model.R
+68336-element Array{Dorothy.Geometry.Vector3D,1}:
+ [88.98, 81.17, 48.96]
+ [88.5, 81.43, 48.36]  
+ [88.79, 81.31, 48.62]
+ [89.09, 80.96, 49.53]
+ [88.32, 82.19, 48.74]
+ [88.16, 80.64, 48.2]  
+ [89.96, 81.48, 47.76]
+ [90.72, 82.16, 48.24]
+ [90.48, 80.5, 47.58]  
+ [89.49, 82.08, 46.44]
+ [89.17, 83.26, 46.35]
+ ⋮                     
+ [46.27, 45.06, 37.91]
+ [48.76, 62.74, 3.36]  
+ [58.17, 32.9, 6.03]   
+ [82.55, 11.78, 63.57]
+ [57.78, 8.74, 39.17]  
+ [32.68, 17.64, 6.86]  
+ [51.55, 60.28, 0.5]   
+ [31.73, 14.62, 24.97]
+ [113.71, 82.34, 42.32]
+ [82.43, 65.82, 68.69]
+ [110.61, 81.62, 38.56]
+
+julia&gt; model[1].R
+3-element Dorothy.Geometry.Vector3D:
+ 88.98
+ 81.17
+ 48.96
+
+julia&gt; model[1].R[1]
+88.98
+
+julia&gt; model[1].R.x
+88.98
+
+julia&gt; model[1].R = Vector3D(1.0, 1.0, 1.0)
+3-element Vector3D:
+ 1.0
+ 1.0
+ 1.0
+
+julia&gt; model[1].R = [1.0, 1.0, 1.0]
+3-element Array{Float64,1}:
+ 1.0
+ 1.0
+ 1.0
+
+julia&gt; model[1].R.x = 3.0
+ERROR: setfield! immutable struct of type Vector3D cannot be changed
+[...]</code></pre><h2><a class="nav-anchor" id="Model-headers-1" href="#Model-headers-1">Model headers</a></h2><p>In addition to particle properties, each model has a header that stores global properties, such as the unit cell (for periodic systems), a title, etc. This <code>MolecularModelHeader</code> behaves like a dictionary, but also allows named property access and enforces appropriate types for properties.</p><pre><code class="language-julia-repl">julia&gt; model.header
+2-entry MolecularModelHeader:
+ cell
+ title
+
+julia&gt; model.header.title
+&quot;MHC-I protein, water and ions&quot;
+
+julia&gt; model.header.title = &quot;Immunity-related protein in solvent box&quot;
+&quot;Immunity-related protein in solvent box&quot;
+
+julia&gt; model.header.title = 42
+ERROR: MethodError: no method matching headerval(::MolecularModelHeader, ::Val{:title}, ::Int64)
+[...]</code></pre><h2><a class="nav-anchor" id="Particle-selections-1" href="#Particle-selections-1">Particle selections</a></h2><p>Selecting a subset of a molecular model to perform calculations on this subset is a very common operation. The <code>Base.view</code> function, which returns a view into a parent array, can also be used with particle collections.</p><pre><code class="language-julia-repl">julia&gt; prot = view(model, 1:6539)
+6539-particle 9-key MolecularModel view:
+ bfactors
+ chainids
+ elements
+ ids
+ names
+ occupancies
+ R
+ resids
+ resnames
+
+julia&gt; protC = view(prot, 6391:6539)
+149-particle 9-key MolecularModel view:
+ bfactors
+ chainids
+ elements
+ ids
+ names
+ occupancies
+ R
+ resids
+ resnames</code></pre><p>Here, we create two views, the first for all protein atoms in the model, the second only for the third polypeptide chain in the model. Typically, however, you do not know in advance the particle indices to target. Instead, you wish to perform selections such as “all protein atoms”, or “all atoms from chain C”. To do this, the <code>view</code> function as it applies to particle collections is extended to accept <code>Selector</code> objects which query particle properties to determine if they should be included in a selection. The <code>Selectors</code> submodule contains predefined selectors.</p><pre><code class="language-julia-repl">julia&gt; using Dorothy.Selectors
+
+julia&gt; prot == view(model, Protein)
+true
+
+julia&gt; protC == view(prot, ChainId(&quot;C&quot;))
+true</code></pre><p>As you can see, the above two views can be created using selections in a much more convenient manner. Selectors can be combined to perform powerful operations on molecular models.</p><pre><code class="language-julia-repl">julia&gt; selector = Water &amp; Restrict(Within(5.0, of=Protein), by=Residue)
+[...]
+
+julia&gt; length(view(model, selector)) / 3
+1921.0</code></pre><p>There are 1921 water molecules fully enclosed within 5.0 Å of any protein atom.</p><h2><a class="nav-anchor" id="Writing-molecular-models-1" href="#Writing-molecular-models-1">Writing molecular models</a></h2><p>Particle collections (both models and views) can be written to files using <code>writef</code> from the <code>Formats</code> module. Make sure to use a writable location for the output file in the next code example.</p><pre><code class="language-julia-repl">julia&gt; writef(&quot;MHC_protC.pdb&quot;, protC)
+12183</code></pre><h2><a class="nav-anchor" id="Geometry-calculations-1" href="#Geometry-calculations-1">Geometry calculations</a></h2><footer><hr/><a class="previous" href="../intro/"><span class="direction">Previous</span><span class="title">Introduction</span></a><a class="next" href="../module/"><span class="direction">Next</span><span class="title">Module organisation</span></a></footer></article></body></html>
